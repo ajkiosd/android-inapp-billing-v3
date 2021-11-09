@@ -41,10 +41,6 @@ dependencies {
 
 configurations.archives.extendsFrom configurations.default
 
-signing {
-    sign configurations.archives
-}
-
 task androidJavadocs(type: Javadoc) {
     source = 'src/main/java,src/main/aidl'
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
