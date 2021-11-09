@@ -55,8 +55,6 @@ public class BillingProcessor extends BillingBase
 		void onBillingError(int errorCode, @Nullable Throwable error);
 
 		void onBillingInitialized();
-		
-		void onPurchasesUpdated(@NonNull BillingResult billingResult);
 	}
 
 	/**
@@ -237,7 +235,7 @@ public class BillingProcessor extends BillingBase
 					}
 				} else {
 					if (eventHandler != null) {				
-						eventHandler.onPurchasesUpdated(billingResult);
+						eventHandler.onBillingError(responseCode, null);
 					}
 				}
 			}
