@@ -55,6 +55,8 @@ public class BillingProcessor extends BillingBase
 		void onBillingError(int errorCode, @Nullable Throwable error);
 
 		void onBillingInitialized();
+		
+		void onPurchasesUpdated(@NonNull BillingResult billingResult);
 	}
 
 	/**
@@ -232,6 +234,10 @@ public class BillingProcessor extends BillingBase
 					} else {
 						handleItemAlreadyOwned(purchasePayload.split(":")[1]);
 						savePurchasePayload(null);
+					}
+				} else {
+					if (eventHandler != null) {				
+						eventHandler.onPurchasesUpdated(billingResult);
 					}
 				}
 			}
